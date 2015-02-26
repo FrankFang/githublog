@@ -1,0 +1,11 @@
+React.render(
+    <div>
+        <header>
+            <Topbar/>
+        </header>
+        <main>
+            <ArticleList/>
+        </main>
+    </div>,
+    document.body
+)
