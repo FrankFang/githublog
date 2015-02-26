@@ -19,6 +19,8 @@
             $.ajax({
                 url: '//api.github.com/repos/frankfang/reactlog/git/trees/HEAD',
                 dataType: 'jsonp'
+            }).done(function (a) {
+                console.log(a);
             })
             //            $.getJSON('//api.github.com/repos/frankfang/reactlog/git/trees/HEAD?callback=xxx')
         </script>
