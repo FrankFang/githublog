@@ -16,12 +16,11 @@
             )
         </script>
         <script>
-            //            $.ajax({
-            //                url: '//api.github.com/repos/frankfang/reactlog/git/trees/HEAD',
-            //                jsonp: 'callback',
-            //                type: 'jsonp'
-            //            })
-            $.getJSON('//api.github.com/repos/frankfang/reactlog/git/trees/HEAD?callback=xxx')
+            $.ajax({
+                url: '//api.github.com/repos/frankfang/reactlog/git/trees/HEAD',
+                dataType: 'jsonp'
+            })
+            //            $.getJSON('//api.github.com/repos/frankfang/reactlog/git/trees/HEAD?callback=xxx')
         </script>
     </body>
 </html>
