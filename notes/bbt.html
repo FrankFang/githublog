@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>大公司靠文化，初创公司靠人情</title>
+
+</head>
+<body>
+<h1>对于 BBT 的思考</h1>
+
+<p>本文是 Frank 对于 BBT 的思考。</p>
+
+<p>自从九月加入 BBT 到现在已经是第五个月了。 这五个月里，我几乎每天都在迎接新的挑战，创造着连自己都感到惊奇的产品。在这里接触到的每一位同事都值得我学习。</p>
+
+<p>Marco 让我写对公司的建议和如何改进公司，我非常感谢你的我的信任和赏识。我也觉得我有责任和义务对公司的发展出谋划策。以下是我的想法</p>
+
+<blockquote><p>创业是否能成功，靠谱的团队靠谱的人最关健。 方向有大小，时机有早晚，但只要人靠谱，坚持走下去，终究会走向成功。
+-- 中国小米公司联合创始人黎万强</p>
+
+<p>Value = Problem × Soluton × Team x Timing
+-- 创业者王兴</p></blockquote>
+
+<p>这两句引言都包含了三个共同的要素：时机、方向和人（即团队）。
+接下来我会说说我对这三个方面的理解，希望能为 BBT 在发展的道路上贡献一些思路。</p>
+
+<h2>团队</h2>
+
+<p>首先我要说的是团队。我对 BBT 的团队非常有信心，我深信这是一个靠谱的团队。</p>
+
+<p>我相信 Marco 也知道团队的重要性。对于初创团队来说，团队就是一切，没有团队就没有了一切。</p>
+
+<h3>大公司靠文化，初创公司靠人情</h3>
+
+<p>有些大公司是有专门的团队来负责营造一种公司文化的，文化衫、新年贺卡、圣诞晚会、月饼、生日礼物，等等。
+他们这么做，都是为了形成一种表面上的凝聚力，因为公司的人太多了，可能A在公司工作几年，都没和同事B说过话。如果他们穿着相同 logo 的衣服，或许稍稍感觉亲切一点。</p>
+
+<p>而对于初创公司来说，人与人的合作、交流，甚至私下的交情，才是这个企业的『文化』。</p>
+
+<p>BBT 的所有人都坐在一间办公室是一个很好的现象，这样坐能使得交流和接触变得非常容易。</p>
+
+<p>BBT 的同事能聚在一起，就是因为我们喜欢 BBT 创造的高效、沟通流畅的工作环境。</p>
+
+<p>BBT 相信人可以创造价值，相信人本身也是有价值的，相信一群团结起来的人的巨大的价值。</p>
+
+<p>我喜欢 BBT 的一个原因就是我们团队对技术的热爱，对公司产品的热情，以及彼此的尊重。我们的关系就像战友一样。当我看到 Marco 自己到街上给 Linking Me 贴海报的时候，我就觉得这个团队真的很靠谱，就好像战士看到将领亲自冲锋陷阵一样，很鼓舞士气。</p>
+
+<p>当然，我并不是说大公司搞的那一套『文化衫、新年贺卡、圣诞晚会、月饼、生日礼物』的文化是虚伪的，有很多人还是很买这种文化的账的。如果逢年过节时，父母能收公司寄来的小礼物，父母会觉得这个公司是很重视他们的子女的。</p>
+
+<p>另外，我觉得公司是否是外包性质，对团队凝聚力与 owner 意识的影响并不大。我见过很多开发，待在一个拥有自主产品的公司，但是对自己公司的产品却毫不在意，更谈不上 owner 意识。</p>
+
+<h2>时机</h2>
+
+<p>再说说时机。有些产品，只能在对的时候做才会成功。</p>
+
+<p>先看一个数据，去年上半年 Statista 发布了<a href="https://d28wbuch0jlv7v.cloudfront.net/images/infografik/normal/ChartOfTheDay_1380_Mobile_web_usage_n.jpg">一个报告</a>称<strong>2013年全球互联网已经有17%的流量来自智能手机</strong></p>
+
+<p><img src="https://d28wbuch0jlv7v.cloudfront.net/images/infografik/normal/ChartOfTheDay_1380_Mobile_web_usage_n.jpg" alt="" /></p>
+
+<p>而且早在2012年，<a href="http://www.kpcb.com/insights/2012-internet-trends-update">Mary Meeker 的报告《2012年互联网趋势》</a>就已经发现<strong>移动互联网流量增速超过了 PC</strong>。</p>
+
+<p>综合这两个报告，我们有理由相信，网站的流量将越来越多的来自智能手机和 Pad。这就是一个趋势，也是一个时机。</p>
+
+<p>我们的 Specless 的成功就是一个抓住时机的例子。</p>
+
+<p>在移动互联网的流量与日俱增的同时，移动互联网上的商业广告的市场也越来越大，但是，却没有几家公司在专门填补这一空白。而 Specless 做到了。</p>
+
+<p>如果 Specless 是在一年前被提出来，不会有人关注它；如果 Specless 在一年后被提出来，它会面临十家以上的竞争者。时机。 所谓时势造英雄。能掌握大势的人，才能夺得先机（当然也不排除运气好的人）。</p>
+
+<p>移动设备流量的提升只是表面现在，它反映的是一个事实：越来越多的人把手机待在身上，随时用它来上网。</p>
+
+<p>这个时候商家们会有一个很强烈的愿望，能直接把广告甚至商品发到这些随身携带的设备上。传统的商业模式常常有层层代理、经销商、零售商、广告商，使得利润被压得很低。如果能与潜在用户直接连接，那么中间节点会被消除，商家就可以直接发广告给用户（美团、微信服务号等），直接收到用户的反馈（大众点评、微信服务号等），把精力主要放在做好自己的产品上。</p>
+
+<p>在进一步，商家希望手机能直接支付。而国内的微信，目前最有希望建立起一个移动支付平台。微信确实抓住了这个时机。</p>
+
+<p>这个需求还没完，就算微信的平台是搭建起来了，在微信上建立一个广告发布、反馈收集系统，也是需要技术的。我相信未来一两年中国会有还多商家有这样的需求。目前<a href="http://koudaitong.com/">口袋通</a>（2013年5月上线）就在做样的事情。</p>
+
+<p>上面只是举的一个例子，我不认为 BBT 应该立即做类似口袋通的需求。
+我的 point 是在移动设备将成为主要流量来源的趋势下，逆趋势的产品会很难生存，顺趋势的产品有可能生存。
+这可以作为 BBT 选择 case 的依据之一。</p>
+
+<h2>方向</h2>
+
+<p>Marco 谈到目前公司接的业务比较杂的问题，我说下我的想法。</p>
+
+<p>不管是 O2O，还是 SNS，都能分为两类产品：大众化的产品和垂直产品。</p>
+
+<p><a href="http://answers.yahoo.com/">Yahoo Answers</a>是大众化的问答网站，而<a href="http://stackoverflow.com">Stackoverflow</a>则是垂直行业问答网站。
+Facebook 是大众化的 SNS 网站，而另外一些 Gay 交友网站则是垂直 SNS 网站。</p>
+
+<p>做大众化产品拼的是对用户需求的理解，垂直行业拼的是对行业的理解。</p>
+
+<p>大众化产品的用户群非常广，有各行各样的人，有各种年龄的人，在做这些产品的时候往往需要从几百项需求中精炼出最核心的需求，再开始做。并且在迭代的过程中，根据用户需求的变化和用户的反馈逐步调整自己的产品。由于没有门槛，所以这类产品很容易被抄袭模仿，竞争压力较大，用户忠诚度也比较低。</p>
+
+<p>以搜索引擎为例，我常用的是谷歌和百度，搜索引擎的需求当然是够快够准确。但是我对它俩都不粘，哪个的搜索结果里没有我想要的，我就会转向另一个搜索引擎。所以谷歌和百度都在努力增加用户粘度，鼓励用户把它们设置为浏览器主页。谷歌还开发出了 Chrome 浏览器（默认搜索引擎还是谷歌），其战略目的之一肯定是增加用户对谷歌搜索的粘性。百度也有类似的行为。</p>
+
+<p>而垂直产品，目标用户明确，需要我们对行业有清楚的认识。所以我认为没有领域专家是很难做好这个的。但是一旦做成，用户的粘性会很高，他们非常愿意为一款好用的行业软件付费。</p>
+
+<p>所以我会认为如果要做好一个垂直行业平台，我们就要和这个行业的领域专家建立长久而精密的联系。如果我们能找到这样的人是最好的，在找到他之前，也许我们可以专注某个领域接很多类似的需求</p>
+
+<h2>最后</h2>
+
+<p>我喜欢 BBT，我愿意在 BBT 创造新的产品，和 BBT 共同发展。</p>
+
+<p>而且我并不准备把自己局限于技术人员。 我非常愿意承担项目管理方面的工作，因为我本身是软件工程专业毕业的，对于产品需求、开发流程和进度控制都有一些专业的了解。</p>
+
+<p>同时我给自己的任务是在接下来的几个月里，将前端的流程彻底完善，并把 babbitt 培养起来，使他也能在前端独当一面。</p>
+
+<p>感想太多了，实在写不完。过年回公司后再和 Marco 多多交流吧。 :)</p>
+</body>
+</html>
