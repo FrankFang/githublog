@@ -9,7 +9,7 @@ var ArticleList = React.createClass({
         function getMaster(baseUrl) {
             return $.get(baseUrl + 'refs/heads/master' + params).fail( function(response) {
                 if(response.status === 403) {
-                    alert('访问受限。请在 gh-pages 分支的 index.html 页面中填写你的 github 帐号的 clientId 和 clientSecret。')
+                    alert('Access denied. Please put your GitHub application clientId and clientSecret in index.html')
                 }
             })
         }
