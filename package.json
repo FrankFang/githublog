@@ -1,0 +1,26 @@
+{
+  "name": "githublog",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FrankFang/githublog.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FrankFang/githublog/issues"
+  },
+  "homepage": "https://github.com/FrankFang/githublog",
+  "dependencies": {
+    "del": "~1.1.1",
+    "gulp": "~3.8.11",
+    "gulp-autoprefixer": "~2.1.0",
+    "gulp-browserify": "~0.5.1",
+    "gulp-jsx": "~0.9.0"
+  }
+}
