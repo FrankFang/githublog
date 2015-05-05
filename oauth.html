@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button>Click me to OAuth</button>
+    <script>
+        var client_id = '0f39e80a1c7ef47e8f78'
+    </script>
+
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/lodash.js"></script>
+    <script src="vendor/oauth.io/oauth.js"></script>
+    <script>
+        OAuth.initialize('SStsPkMVykVJFszLnFSqa11r_-o');
+        console.log(OAuth);
+        $('button').click(function () {
+//            OAuth.redirect('github', "http://localhost:8080/oauth_done.html");
+            OAuth.popup('github', {cache: true})
+                    .done(function (result) {
+                        result.me().done(function (e) {
+                            console.log(e.raw.login);
+                            result.post('/gists', {
+                                data:{
+                                    "description": "the description for this gist",
+                                    "public": true,
+                                    "files": {
+                                        "file1.txt": {
+                                            "content": "String file contents"
+                                        }
+                                    }
+                                }
+                            })
+                        })
+                    }).fail(function (e) {
+                        console.log(e);
+                    })
+        })
+    </script>
+</body>
+</html>
