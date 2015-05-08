@@ -20,10 +20,12 @@
 //            OAuth.redirect('github', "http://localhost:8080/oauth_done.html");
             OAuth.popup('github', {cache: true})
                     .done(function (result) {
+                        console.log(result);
                         result.me().done(function (e) {
-                            console.log(e.raw.login);
-                            result.post('/gists', {
-                                data:{
+                            $.ajax({
+                                url: 'https://api.github.com/gists?access_token='+result.access_token,
+                                type: 'post',
+                                data: JSON.stringify({
                                     "description": "the description for this gist",
                                     "public": true,
                                     "files": {
@@ -31,7 +33,7 @@
                                             "content": "String file contents"
                                         }
                                     }
-                                }
+                                })
                             })
                         })
                     }).fail(function (e) {
