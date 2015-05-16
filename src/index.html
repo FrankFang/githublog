@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Blog</title>
-    <!-- build:css style/bundle.css -->
+    <!-- build:css style/lib.css -->
     <link rel="stylesheet" href="vendor/normalize.css" type="text/css" media="screen">
     <link rel="stylesheet" href="vendor/typo.css" type="text/css" media="screen">
-    <link rel="stylesheet/less" href="style/style.less" type="text/css" media="screen">
+    <!-- endbuild -->
+    
+    <!-- build:less style/bundle.css -->
+    <link rel="stylesheet" href="style/style.less" type="text/css" media="screen">
     <!-- endbuild -->
     <style type="text/css" media="screen">
         a:hover { text-decoration: none; }
@@ -45,7 +48,7 @@
     <script src="vendor/JSXTransformer.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js script/app.js-->
+    <!-- build:jsx script/app.js-->
     <script type="text/jsx" src="Topbar.jsx"></script>
     <script type="text/jsx" src="Article.jsx"></script>
     <script type="text/jsx" src="ArticleListItem.jsx"></script>

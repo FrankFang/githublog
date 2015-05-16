@@ -29,7 +29,9 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "http-server": "~0.8.0",
-    "gulp-usemin": "^0.3.11"
+    "gulp-usemin": "^0.3.11",
+    "gulp-less": "^3.0.3",
+    "less-plugin-autoprefix": "^1.4.1"
   },
   "devDependencies": {
     "gulp-react": "^3.0.1"
