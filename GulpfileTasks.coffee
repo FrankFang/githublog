@@ -5,6 +5,7 @@ uglify = require 'gulp-uglify'
 sourcemaps = require 'gulp-sourcemaps'
 del = require 'del'
 react = require 'gulp-react'
+usemin = require 'gulp-usemin'
 
 myPaths = {
     dist: 'public'
@@ -22,6 +23,14 @@ gulp.task 'jsx', ['copy'], () ->
     gulp.src("#{myPaths.src}/**/*.jsx")
         .pipe react()
         .pipe gulp.dest myPaths.dist
+        
+gulp.task 'b', ['copy'], ()->
+  gulp.src "#{myPaths.src}/*.html"
+      .pipe usemin {
+        css: ['concat']
+        js: ['concat']
+      }
+      .pipe gulp.dest myPaths.dist
 
 
-gulp.task 'default', ['jsx']
+gulp.task 'default', ['b']
