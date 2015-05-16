@@ -12,7 +12,7 @@ myPaths = {
 }
 
 gulp.task 'clean', (cb) ->
-    del [myPaths.dist], cb
+    del ["#{myPaths.dist}/**"], cb
 
 gulp.task 'copy', ['clean'],  () ->
     gulp.src("#{myPaths.src}/**")
