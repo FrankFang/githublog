@@ -15,26 +15,12 @@
     <script src="vendor/oauth.io/oauth.js"></script>
     <script>
         OAuth.initialize('SStsPkMVykVJFszLnFSqa11r_-o');
-        console.log(OAuth);
         $('button').click(function () {
-//            OAuth.redirect('github', "http://localhost:8080/oauth_done.html");
             OAuth.popup('github', {cache: true})
                     .done(function (result) {
                         console.log(result);
                         result.me().done(function (e) {
-                            $.ajax({
-                                url: 'https://api.github.com/gists?access_token='+result.access_token,
-                                type: 'post',
-                                data: JSON.stringify({
-                                    "description": "the description for this gist",
-                                    "public": true,
-                                    "files": {
-                                        "file1.txt": {
-                                            "content": "String file contents"
-                                        }
-                                    }
-                                })
-                            })
+                            console.log(e);
                         })
                     }).fail(function (e) {
                         console.log(e);

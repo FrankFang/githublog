@@ -16,33 +16,53 @@ myPaths = {
 }
 
 gulp.task 'clean', (cb) ->
-    del [myPaths.dist], cb
+  del ["#{myPaths.dist}/**"], cb
 
 gulp.task 'copy', ['clean'],  () ->
-    gulp.src("#{myPaths.src}/**")
-        .pipe gulp.dest myPaths.dist
+  gulp.src("#{myPaths.src}/**")
+  .pipe gulp.dest myPaths.dist
 
 gulp.task 'jsx', ['copy'], () ->
-    gulp.src("#{myPaths.src}/**/*.jsx")
-        .pipe react()
-        .pipe gulp.dest myPaths.dist
-        
-gulp.task 'b', ['copy'], ()->
+  gulp.src("#{myPaths.src}/**/*.jsx")
+  .pipe react()
+  .pipe gulp.dest myPaths.dist
+
+gulp.task 'less', ['copy'], () ->
+  gulp.src("#{myPaths.src}/**/*.less")
+  .pipe less {plugins: [autoprefix]}
+  .pipe gulp.dest myPaths.dist
+
+gulp.task 'build', ['copy'], ()->
   gulp.src "#{myPaths.src}/*.html"
-      .pipe usemin {
-        css: [
-          'concat'
-        ]
-        less: [
-          less {
-            plugins: [autoprefix]
-          }
-          'concat'
-        ]
-        js: ['concat']
-        jsx: [react(),'concat']
-      }
-      .pipe gulp.dest myPaths.dist
+  .pipe usemin {
+    css: ['concat']
+    less: [
+      less {plugins: [autoprefix]}
+      'concat'
+    ]
+    js: ['concat']
+    jsx: [react(), 'concat']
+  }
+  .pipe gulp.dest myPaths.dist
+
+gulp.task 'watch', [], ()->
+  gulp.watch "#{myPaths.src}/**/*.jsx", (event)->
+    gulp.src(event.path, {base: myPaths.src})
+    .pipe react()
+    .pipe gulp.dest myPaths.dist
+    console.log("#{event.path} updated")
+
+  gulp.watch "#{myPaths.src}/**/*.less", (event)->
+    gulp.src(event.path, {base: myPaths.src})
+    .pipe less {plugins: [autoprefix]}
+    .pipe gulp.dest myPaths.dist
+    console.log("#{event.path} updated")
+
+  gulp.watch "#{myPaths.src}/**/*.html", (event)->
+    gulp.src(event.path, {base: myPaths.src})
+    .pipe gulp.dest myPaths.dist
+    console.log("#{event.path} updated")
 
 
-gulp.task 'default', ['b']
+gulp.task 'default', ['build']
+gulp.task 'debug', ['copy', 'jsx', 'less', 'watch']

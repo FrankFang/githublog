@@ -1,10 +1,14 @@
 var Topbar = React.createClass({
+
     render: function () {
-        return ( 
+
+        return (
             <div className="Topbar">
-                <img src="./reactjs_logo.png" />
+                <img src="./reactjs_logo.png"/>
                 <a href="#">首页</a>
+                <a href="/manage.html">管理</a>
             </div>
         )
-    }
+    },
+
 })
