@@ -1,6 +1,6 @@
 var React = require('react/addons')
-var Topbar = require('./Topbar.jsx')
-var ArticleList = require('./ArticleList.jsx')
+var Topbar = require('./components/Topbar.jsx')
+var ArticleList = require('./components/ArticleList.jsx')
 
 React.render(
     <div>
