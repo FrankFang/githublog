@@ -15,7 +15,7 @@ var Article = React.createClass({
                 }
             })
         }
-        getRaw(this.props.source + params)   
+        getRaw(this.props.source + params)
             .done( function(raw) {
                 this.setState({content:marked(raw)})
             }.bind(this) )

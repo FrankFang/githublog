@@ -2,7 +2,7 @@ var ArticleListItem = React.createClass({
     render : function() {
         return (
             <li className="ArticleListItem">
-                <a href="javascript:;" 
+                <a href="javascript:;"
                     onClick={this.props.onOpen}
                     className={React.addons.classSet({
                         active: this.props.item.hide !== 'yes',

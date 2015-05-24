@@ -1,14 +1,14 @@
 var ArticleList = React.createClass({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             items: [],
             requestStatus: ''
         }
     },
-    componentDidMount: function() {
+    componentDidMount: function () {
         function getMaster(baseUrl) {
-            return $.get(baseUrl + 'refs/heads/master' + params).fail( function(response) {
-                if(response.status === 403) {
+            return $.get(baseUrl + 'refs/heads/master' + params).fail(function (response) {
+                if (response.status === 403) {
                     alert('Access denied. Please put your GitHub application clientId and clientSecret in index.html')
                 }
             })
@@ -25,7 +25,7 @@ var ArticleList = React.createClass({
             var result = []
 
             var tree = response.tree
-            tree.forEach(function(item) {
+            tree.forEach(function (item) {
                 var nodeType = item.type
                 if (nodeType === 'blob') {
                     var regex = /([^.].*)\.md/
@@ -38,30 +38,33 @@ var ArticleList = React.createClass({
                         })
                     }
                 } else if (nodeType === 'tree') {
-
+                    ;//TODO
                 }
             })
 
             return result
         }
 
-        var baseUrl = '//api.github.com/repos/'+userName+'/'+repoName+'/git/'
+        var baseUrl = '//api.github.com/repos/' + userName + '/' + repoName + '/git/'
         var self = this
 
-        $.post('https://api.github.com/repos/FrankFang/githublog/git/blobs?client_id=0f39e80a1c7ef47e8f78&client_secret=75b612e9fee3ab20606e8700f0ef03f0fc536381',
-        {data:{content:'hi'}})
+        $.post(
+            'https://api.github.com/repos/FrankFang/githublog/git/blobs?client_id=0f39e80a1c7ef47e8f78&client_secret=75b612e9fee3ab20606e8700f0ef03f0fc536381',
+            {data: {content: 'hi'}}
+        )
 
         self.setState({requestStatus: 'loading'})
 
-        getMaster(baseUrl).then(function(response) {
+        getMaster(baseUrl).then(function (response) {
 
 
-            getTree(response).then(function(response) {
+            getTree(response).then(function (response) {
 
 
                 var items = getMarkdowns(response)
 
-                // why not self.state.items = items?
+                //why not self.state.items = items?
+
                 self.setState({
                     items: items,
                     requestStatus: 'success',
@@ -70,31 +73,31 @@ var ArticleList = React.createClass({
         })
     },
 
-    handleClick: function(item) {
-        this.setState( function(p, n) {
-            _.where(p.items,item).hidden = false
+    handleClick: function (item) {
+        this.setState(function (p, n) {
+            _.where(p.items, item).hidden = false
             return p
         })
     },
 
-    onOpen: function(item) {
+    onOpen: function (item) {
         var items = JSON.parse(JSON.stringify(this.state.items))
         var found = _.findWhere(items, item)
         found.hide = (found.hide === 'yes' ? 'no' : 'yes')
-        this.setState({items:items})
+        this.setState({items: items})
     },
-    render: function(){
-        if (this.state.requestStatus === 'loading' ){
+    render: function () {
+        if (this.state.requestStatus === 'loading') {
             return (
                 <div className="spinner"></div>
             )
         } else {
-            var nodes = this.state.items.map(function(item){
+            var nodes = this.state.items.map(function (item) {
                 return (
-                    <ArticleListItem 
-                        item={item} 
+                    <ArticleListItem
+                        item={item}
                         onOpen={this.onOpen.bind(this,item)}
-                    />
+                        />
                 )
             }.bind(this))
 
