@@ -16,7 +16,7 @@ reactify = require 'reactify'
 myPaths = {
   dist: 'public'
   src: 'src',
-  bootstrap: 'src/scripts/app.jsx'
+  bootstrap: 'src/scripts/main.jsx'
 }
 
 gulp.task 'clean', (cb) ->
@@ -52,10 +52,12 @@ gulp.task 'build', ['copy'], ()->
   .pipe gulp.dest myPaths.dist
 
 gulp.task 'watch', [], ()->
-  gulp.watch "#{myPaths.src}/**/*.jsx", (event)->
+  gulp.watch "#{myPaths.src}/**/*.{jsx,js}", (event)->
     browserify myPaths.bootstrap
     .transform reactify
     .bundle()
+    .on 'error', (err) ->
+      console.log "Error: #{err.message}"
     .pipe source 'bundle.js'
     .pipe gulp.dest "#{myPaths.dist}/scripts"
     console.log "#{event.path} updated"

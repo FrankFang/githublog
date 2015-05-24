@@ -54,11 +54,6 @@ module.exports = React.createClass({
         var baseUrl = '//api.github.com/repos/' + userName + '/' + repoName + '/git/'
         var self = this
 
-        $.post(
-            'https://api.github.com/repos/FrankFang/githublog/git/blobs?client_id=0f39e80a1c7ef47e8f78&client_secret=75b612e9fee3ab20606e8700f0ef03f0fc536381',
-            {data: {content: 'hi'}}
-        )
-
         self.setState({requestStatus: 'loading'})
 
         getMaster(baseUrl).then(function (response) {
