@@ -1,4 +1,10 @@
-var ArticleList = React.createClass({
+var React = require('react/addons')
+var $ = require('jquery')
+var Article = require('./Article.jsx')
+var ArticleListItem = require('./ArticleListItem.jsx')
+var _ = require('lodash')
+
+module.exports = React.createClass({
     getInitialState: function () {
         return {
             items: [],
@@ -95,6 +101,7 @@ var ArticleList = React.createClass({
             var nodes = this.state.items.map(function (item) {
                 return (
                     <ArticleListItem
+                        key={item.link}
                         item={item}
                         onOpen={this.onOpen.bind(this,item)}
                         />

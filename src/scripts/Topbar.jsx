@@ -1,4 +1,7 @@
-var Topbar = React.createClass({
+var React = require('react/addons')
+var $ = require('jquery')
+
+module.exports = React.createClass({
 
     render: function () {
 
@@ -12,3 +15,5 @@ var Topbar = React.createClass({
     },
 
 })
+
+

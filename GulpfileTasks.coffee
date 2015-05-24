@@ -3,29 +3,35 @@ coffee = require 'gulp-coffee'
 concat = require 'gulp-concat'
 uglify = require 'gulp-uglify'
 sourcemaps = require 'gulp-sourcemaps'
+source = require 'vinyl-source-stream'
 del = require 'del'
 react = require 'gulp-react'
 usemin = require 'gulp-usemin'
 less = require 'gulp-less'
 LessPluginAutoPrefix = require 'less-plugin-autoprefix'
-autoprefix = new LessPluginAutoPrefix { browsers: ["last 2 versions"] }
+autoprefix = new LessPluginAutoPrefix {browsers: ["last 2 versions"]}
+browserify = require 'browserify'
+reactify = require 'reactify'
 
 myPaths = {
-    dist: 'public'
-    src: 'src'
+  dist: 'public'
+  src: 'src',
+  bootstrap: 'src/scripts/app.jsx'
 }
 
 gulp.task 'clean', (cb) ->
   del ["#{myPaths.dist}/**"], cb
 
-gulp.task 'copy', ['clean'],  () ->
+gulp.task 'copy', ['clean'], () ->
   gulp.src("#{myPaths.src}/**")
   .pipe gulp.dest myPaths.dist
 
-gulp.task 'jsx', ['copy'], () ->
-  gulp.src("#{myPaths.src}/**/*.jsx")
-  .pipe react()
-  .pipe gulp.dest myPaths.dist
+gulp.task 'bundle', [], ()->
+  browserify myPaths.bootstrap
+  .transform reactify
+  .bundle()
+  .pipe source 'bundle.js'
+  .pipe gulp.dest "#{myPaths.dist}/scripts"
 
 gulp.task 'less', ['copy'], () ->
   gulp.src("#{myPaths.src}/**/*.less")
@@ -47,10 +53,12 @@ gulp.task 'build', ['copy'], ()->
 
 gulp.task 'watch', [], ()->
   gulp.watch "#{myPaths.src}/**/*.jsx", (event)->
-    gulp.src(event.path, {base: myPaths.src})
-    .pipe react()
-    .pipe gulp.dest myPaths.dist
-    console.log("#{event.path} updated")
+    browserify myPaths.bootstrap
+    .transform reactify
+    .bundle()
+    .pipe source 'bundle.js'
+    .pipe gulp.dest "#{myPaths.dist}/scripts"
+    console.log "#{event.path} updated"
 
   gulp.watch "#{myPaths.src}/**/*.less", (event)->
     gulp.src(event.path, {base: myPaths.src})
@@ -65,4 +73,4 @@ gulp.task 'watch', [], ()->
 
 
 gulp.task 'default', ['build']
-gulp.task 'debug', ['copy', 'jsx', 'less', 'watch']
+gulp.task 'debug', ['copy', 'bundle', 'less', 'watch']

@@ -1,4 +1,10 @@
-var Article = React.createClass({
+var React = require('react/addons')
+var $ = require('jquery')
+var _ = require('lodash')
+var marked = require('marked')
+console.log(marked);
+
+module.exports = React.createClass({
     getInitialState: function () {
         return {
             requestStatus: '',
