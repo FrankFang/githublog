@@ -5,7 +5,7 @@ var $ = require('jquery')
 
 var CHANGE_EVENT = 'change';
 
-var _articles = {};
+var _articles = [];
 
 var ArticleStore = assign({}, EventEmitter.prototype, {
 
@@ -67,7 +67,8 @@ function fetch() {
     getMaster(baseUrl).then(function (response) {
         getTree(response).then(function (response) {
             var items = getMarkdowns(response)
-            console.log(items);
+            _articles = items
+            ArticleStore.emitChange()
         })
     })
 }
