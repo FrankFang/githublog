@@ -1,6 +1,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+var $ = require('jquery')
 
 var CHANGE_EVENT = 'change';
 
@@ -73,11 +74,9 @@ function fetch() {
 
 
 AppDispatcher.register(function (action) {
-    console.log(1)
 
     switch (action.type) {
         case 'fetch':
-            console.log(1);
             fetch()
             break;
 
