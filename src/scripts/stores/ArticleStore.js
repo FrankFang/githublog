@@ -2,6 +2,8 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var $ = require('jquery')
+var _ = require('lodash')
+var marked = require('marked')
 
 var CHANGE_EVENT = 'change';
 
@@ -26,6 +28,24 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
     }
 });
 
+function fetchContent(item) {
+    function getRaw(url) {
+        return $.ajax({
+            url: url,
+            method: 'get',
+            headers: {
+                Accept: 'application/vnd.github.v3.raw'
+            }
+        })
+    }
+    getRaw(item.link + params)
+        .done(function (raw) {
+            item.content = marked(raw)
+            ArticleStore.emitChange()
+        }.bind(this))
+
+}
+
 function fetch() {
     function getMaster(baseUrl) {
         return $.get(baseUrl + 'refs/heads/master' + params)
@@ -36,7 +56,6 @@ function fetch() {
         var url = baseUrl + 'trees/' + sha + params
         return $.ajax(url)
     }
-
 
     function getMarkdowns(response) {
         var result = []
@@ -54,8 +73,7 @@ function fetch() {
                         hide: 'yes'
                     })
                 }
-            } else if (nodeType === 'tree') {
-                ;//TODO
+            } else if (nodeType === 'tree') {; //TODO
             }
         })
 
@@ -73,16 +91,18 @@ function fetch() {
     })
 }
 
-
 AppDispatcher.register(function (action) {
 
     switch (action.type) {
         case 'fetch':
             fetch()
             break;
+        case 'fetchContent':
+            fetchContent(action.args)
+            break;
 
         default:
-        // nothing
+            // nothing
     }
 });
 

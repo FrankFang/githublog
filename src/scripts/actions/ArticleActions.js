@@ -6,5 +6,12 @@ module.exports = {
             type: 'fetch'
         })
     },
+    fetchContent: function (item) {
+
+        AppDispatcher.dispatch({
+            type: 'fetchContent',
+            args: item
+        })
+    },
 }
 

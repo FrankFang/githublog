@@ -33,19 +33,18 @@ module.exports = React.createClass({
         })
     },
 
-    onOpen: function (item) {
-        var items = JSON.parse(JSON.stringify(this.state.items))
-        var found = _.findWhere(items, item)
-        found.hide = (found.hide === 'yes' ? 'no' : 'yes')
-        this.setState({items: items})
-    },
+    //onOpen: function (item) {
+        //var items = JSON.parse(JSON.stringify(this.state.items))
+        //var found = _.findWhere(items, item)
+        //found.hide = (found.hide === 'yes' ? 'no' : 'yes')
+        //this.setState({items: items})
+    //},
     render: function () {
         var nodes = this.state.items.map(function (item) {
             return (
                 <ArticleListItem
                     key={item.link}
                     item={item}
-                    onOpen={this.onOpen.bind(this,item)}
                     />
             )
         }.bind(this))
