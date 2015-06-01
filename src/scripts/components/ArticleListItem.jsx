@@ -7,19 +7,17 @@ var Article = require('./Article.jsx')
 
 
 module.exports = React.createClass({
-    sss: {
-        folded: true        
-    },
     getInitialState: function() {
-        console.log(1)
-        return this.sss
+        return {
+            folded: true
+        }
     },
     onToggle: function() {
-        this.sss.folded = !this.sss.folded
+        this.state.folded = !this.state.folded
         this.onChange()
     },
     onChange: function() {
-        this.setState(this.sss)
+        this.setState(this.state)
     },
     render: function () {
         return (
