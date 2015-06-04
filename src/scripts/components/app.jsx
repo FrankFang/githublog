@@ -2,6 +2,7 @@ var React = require('react/addons')
 
 var ArticleActions = require('../actions/ArticleActions')
 var ArticleStore = require('../stores/ArticleStore')
+var UserStore = require('../stores/UserStore')
 
 var Topbar = require('./Topbar.jsx')
 var ArticleList = require('./ArticleList.jsx')

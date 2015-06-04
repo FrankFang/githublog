@@ -103,6 +103,7 @@ AppDispatcher.register(function (action) {
 
         default:
             // nothing
+            break;
     }
 });
 
