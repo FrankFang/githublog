@@ -11,7 +11,7 @@ OAuth.initialize('SStsPkMVykVJFszLnFSqa11r_-o');
 
 var UserStore = assign({}, EventEmitter.prototype, {
 
-    getAll: function () {
+    fetch: function () {
         return _user;
     },
 
