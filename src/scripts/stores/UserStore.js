@@ -58,6 +58,7 @@ function fetch() {
     }
     userData.me().done(function (me) {
         _user = me
+        console.log(me)
         UserStore.emitChange()
     }).fail(function (err) {
         _user = null
