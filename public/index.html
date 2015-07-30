@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub Blog</title>
+    <!-- build:css style/lib.css -->
+    <link rel="stylesheet" href="vendor/normalize.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="vendor/typo.css" type="text/css" media="screen">
+    <!-- endbuild -->
+    
+    <!-- build:less style/bundle.css -->
+    <link rel="stylesheet" href="style/style.css" type="text/css" media="screen">
+    <!-- endbuild -->
+    <style type="text/css" media="screen">
+        a:hover { text-decoration: none; }
+    </style>
+</head>
+
+<body>
+
+    <header></header>
+
+    <main role="main"></main>
+
+    <footer></footer>
+
+    <script>
+        // you can modify client_id and client_secret as you wish.
+        var params = '?client_id=' + '0f39e80a1c7ef47e8f78' + '&client_secret=' + '75b612e9fee3ab20606e8700f0ef03f0fc536381'
+        //var userName = location.hostname.split('.')[0]
+        var userName = 'FrankFang'
+        //var repoName = location.pathname.split('/')[1]
+        var repoName = 'githublog'
+    </script>
+
+    <script src="vendor/oauth.io/oauth.min.js"></script>
+
+    <script src="scripts/bundle.js"></script>
+
+</body>
+
+</html>

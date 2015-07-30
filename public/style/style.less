@@ -1,0 +1,151 @@
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+  border-radius: 100%;  
+  animation: scaleout 1.0s infinite ease-in-out;
+}
+
+
+@keyframes scaleout {
+  0% { 
+    transform: scale(0.0);
+  } 100% {
+    transform: scale(1.0);
+    opacity: 0;
+  }
+} 
+
+.Topbar { position: relative; box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.25); height: 64px; display: flex; 
+    align-items: center; justify-content: center;
+    img { position: absolute; top: 50%; margin-top: -24px; left: 16px; }
+    a { margin: 0 16px; }
+}
+
+.ArticleList {
+    > ul { margin: 16px auto; width: 100%; max-width: 800px;
+        > li > a { display: block; height: 64px; line-height: 64px; padding-left: 24px;
+            border: 1px solid transparent;
+            &:hover { box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.25); }
+            &.active{ border: 1px solid hsla(0, 0%, 95%, 1);}
+        }
+    }
+}
+.ArticleListItem {
+    .articleWrapper.hide{
+        display: none;
+    }
+}
+.Article{
+    padding: 16px 24px;
+    border: 1px solid hsla(0, 0%, 95%, 1);
+    border-top: none;
+    margin-bottom: 16px;
+    h1{display: none;}
+}
+join,
+.link,
+.node rect {
+  fill: none;
+  stroke: #636363;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #969696;
+}
+
+.node rect {
+  fill: white;
+}
+
+.link path,
+.node rect,
+.node text,
+.join {
+  -webkit-transition: all 500ms linear;
+  -moz-transition: all 500ms linear;
+  -ms-transition: all 500ms linear;
+  -o-transition: all 501ms linear;
+  transition: all 500ms linear;
+}
+
+.node .element rect {
+  fill: #bdbdbd;
+  stroke: none;
+}
+
+.node .null rect {
+  fill: none;
+  stroke: none;
+}
+
+.node .null text {
+  fill: #636363;
+}
+
+.node .selection rect {
+  stroke: #e6550d;
+}
+
+.node .data rect {
+  stroke: #3182bd;
+}
+
+.node .datum rect {
+  fill: #d9d9d9;
+  stroke: none;
+}
+
+.node .code text {
+  font-family: monospace;
+}
+
+.node .key rect {
+  fill: #a1d99b;
+  stroke: none;
+}
+
+.link .to-key,
+.join {
+  stroke: #a1d99b;
+}
+
+.join {
+  stroke-dasharray: 2,2;
+}
+
+.link .to-null {
+  stroke-dasharray: .5,3.5;
+  stroke-linecap: round;
+}
+
+.link .from-data {
+  stroke: #3182bd;
+}
+
+.play circle {
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 3px;
+}
+
+.play:hover path {
+  fill: #f00;
+}
+
+.play.mousedown circle {
+  fill: #f00;
+}
+
+.play.mousedown path {
+  fill: #fff;
+}
+
+.play rect {
+  fill: none;
+  pointer-events: all;
+  cursor: pointer;
+}
