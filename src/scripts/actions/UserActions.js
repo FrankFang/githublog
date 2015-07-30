@@ -6,5 +6,15 @@ module.exports = {
             type: 'fetch:user'
         })
     },
+    refresh: function () {
+        AppDispatcher.dispatch({
+            type: 'refresh:user'
+        })
+    },
+    exit: function() {
+        AppDispatcher.dispatch({
+            type: 'exit:user'
+        })
+    }
 }
 

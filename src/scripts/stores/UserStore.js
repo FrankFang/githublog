@@ -11,7 +11,7 @@ OAuth.initialize('SStsPkMVykVJFszLnFSqa11r_-o');
 
 var UserStore = assign({}, EventEmitter.prototype, {
 
-    fetch: function () {
+    get: function () {
         return _user;
     },
 
@@ -28,26 +28,41 @@ var UserStore = assign({}, EventEmitter.prototype, {
     }
 });
 
-function fetch() {
-    OAuth.popup('github', {cache: true})
+function exit() {
+    OAuth.clearCache('github')
+    _user = null
+    UserStore.emitChange()
+}
+
+function refresh() {
+    OAuth.popup('github', {
+            cache: true
+        })
         .done(function (result) {
-            result.me().done(function (e) {
-                console.log(e.raw.login);
-                result.post('/gists', {
-                    data: {
-                        description: 'the description for this gist',
-                        public: true,
-                        files: {
-                            'file1.txt': {
-                                'content': 'String file contents'
-                            }
-                        }
-                    }
-                })
+            result.me().done(function (me) {
+                _user = me
+                UserStore.emitChange()
             })
         }).fail(function (e) {
             console.log(e);
         })
+}
+
+function fetch() {
+
+    var userData = OAuth.create('github');
+    if (!userData) {
+        _user = null
+        UserStore.emitChange()
+        return
+    }
+    userData.me().done(function (me) {
+        _user = me
+        UserStore.emitChange()
+    }).fail(function (err) {
+        _user = null
+        UserStore.emitChange()
+    });
 }
 
 AppDispatcher.register(function (action) {
@@ -55,6 +70,12 @@ AppDispatcher.register(function (action) {
     switch (action.type) {
         case 'fetch:user':
             fetch()
+            break;
+        case 'refresh:user':
+            refresh()
+            break;
+        case 'exit:user':
+            exit()
             break;
 
         default:
